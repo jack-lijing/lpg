@@ -1,0 +1,209 @@
+{include file="public/header" /}
+
+</head>
+<body>
+<header class="navbar-wrapper">
+	<div class="navbar navbar-fixed-top">
+		<div class="container-fluid cl"> <a class="logo navbar-logo f-l mr-10 hidden-xs" href="/aboutHui.shtml">LPG气站运维管理平台</a> 
+			
+			<a aria-hidden="false" class="nav-toggle Hui-iconfont visible-xs" href="javascript:;">&#xe667;</a>
+			
+		<nav id="Hui-userbar" class="nav navbar-nav navbar-userbar hidden-xs">
+			<ul class="cl">
+				
+				<li class="dropDown dropDown_hover">
+					<a href="#" class="dropDown_A">MORTAL <i class="Hui-iconfont">&#xe6d5;</i></a>
+					<ul class="dropDown-menu menu radius box-shadow">
+						<li><a href="javascript:;" onClick="myselfinfo()">个人信息</a></li>
+						<li><a href="#">切换账户</a></li>
+						<li><a href="{:url('login/logout')}">退出</a></li>
+				</ul>
+			</li>
+				<li id="Hui-msg"> <a href="#" title="消息"><span class="badge badge-danger">1</span><i class="Hui-iconfont" style="font-size:18px">&#xe68a;</i></a> </li>
+				<li id="Hui-skin" class="dropDown right dropDown_hover"> <a href="javascript:;" class="dropDown_A" title="换肤"><i class="Hui-iconfont" style="font-size:18px">&#xe62a;</i></a>
+					<ul class="dropDown-menu menu radius box-shadow">
+						<li><a href="javascript:;" data-val="default" title="默认（黑色）">默认（黑色）</a></li>
+						<li><a href="javascript:;" data-val="blue" title="蓝色">蓝色</a></li>
+						<li><a href="javascript:;" data-val="green" title="绿色">绿色</a></li>
+						<li><a href="javascript:;" data-val="red" title="红色">红色</a></li>
+						<li><a href="javascript:;" data-val="yellow" title="黄色">黄色</a></li>
+						<li><a href="javascript:;" data-val="orange" title="橙色">橙色</a></li>
+					</ul>
+				</li>
+			</ul>
+		</nav>
+	</div>
+</div>
+</header>
+{include file="public/menu" /}
+<div class="dislpayArrow hidden-xs">
+	<a class="pngfix" href="javascript:void(0);" onClick="displaynavbar(this)"></a>
+</div>
+<section class="Hui-article-box">
+	 <div id="Hui-tabNav" class="Hui-tabNav hidden-xs">
+		<div class="Hui-tabNav-wp">
+			<ul id="min_title_list" class="acrossTab cl">
+				<li class="active">
+					<span title="我的桌面" data-href="welcome.html">我的桌面</span>
+					<em></em>
+				</li>
+			</ul>
+		</div>
+
+		<div class="Hui-tabNav-more btn-group">
+			<a id="js-tabNav-prev" class="btn radius btn-default size-S" href="javascript:;"><i class="Hui-iconfont">&#xe6d4;</i></a>
+			<a id="js-tabNav-next" class="btn radius btn-default size-S" href="javascript:;"><i class="Hui-iconfont">&#xe6d7;</i></a>
+		</div>
+	</div>
+
+	<div id="iframe_box" class="Hui-article">
+		<div class="show_iframe">
+			<nav class="breadcrumb"><i class="Hui-iconfont"></i> <a href="/" class="maincolor">首页</a> 
+		<span class="c-999 en">&gt;</span>
+		<span class="c-666">运行环境</span>
+		<a class="btn btn-success radius r" style="line-height:1.6em;margin-top:3px" href="javascript:location.replace(location.href);" title="刷新" ><i class="Hui-iconfont">&#xe68f;</i></a></nav>
+	<div class="Hui-article">
+		<article class="cl pd-20">
+			<p class="f-20 text-success">欢迎登录后台管理系统</p>
+			<!-- 调用Think对象的session方法 传入参数为user_info.login_count -->
+			<p>登录次数：{$Think.session.user_info.login_count}</p>
+			<!-- 调用Request对象的ip方法 -->
+			<p>上次登录IP：{$Request.ip}  上次登录时间：{:date("Y-m-d H:i:s", $Think.session.user_info.login_time)}</p>
+
+			<table class="table table-border table-bordered table-bg size-S">
+				<thead>
+					<tr>
+						<th colspan="1" scope="col">服务器信息</th>
+						<th colspan="1" scope="col">内容</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<th width="10%">服务器计算机名</th>
+						<td><span id="lbServerName">{$Request.host}</span></td>
+					</tr>
+					<tr>
+						<td>服务器IP地址</td>
+						<!-- 调用Request对象的ip方法 -->
+						<td>{$Request.ip}</td>
+					</tr>
+					<tr>
+						<td>服务器域名</td>
+						<!--PHP语句:<?php echo \think\Request::instance()->domain(); ?>-->
+						<td>{$Request.domain}</td>
+					</tr>
+					<tr>
+						<td>当前PHP版本 </td>
+						<td>{$Think.const.PHP_VERSION}</td>
+					</tr>
+
+					<tr>
+						<td>服务器版本 </td>
+						<td>{$Think.const.PHP_OS}</td>
+					</tr>
+					<tr>
+						<td>当前请求URL</td>
+						<!--传入参数true,显示包括域名的完整绝对URL请求地址-->
+						<!--PHP语句:<?php echo \think\Request::instance()->url(true); ?>-->
+						<td>{$Request.url.true}</td>
+					</tr>
+
+					<tr>
+						<td>当前Session数量 </td>
+						<!--这里用原生$_SESSION,TP5无对应方法-->
+						<td>{:count($_SESSION)}</td>
+			</tr>
+					<tr>
+						<td>当前SessionID </td>
+						<!--执行原生session_id()方法,因为tp5无对应请求方法-->
+						<td>{:session_id()}</td>
+			</tr>
+
+		</tbody>
+	</table>
+</article>
+		<footer class="footer">
+			本后台系统由<a href="http://www.h-ui.net/" target="_blank" title="H-ui前端框架">H-ui前端框架</a>提供前端技术支持</p>
+		</footer>
+</div>
+			<!-- <div style="display:none" class="loading"></div>
+			<iframe scrolling="yes" frameborder="0" src=""></iframe> -->
+		</div>
+	</div>
+	
+	
+
+</section>
+
+<div class="contextMenu" id="Huiadminmenu">
+	<ul>
+		<li id="closethis">关闭当前 </li>
+		<li id="closeall">关闭全部 </li>
+</ul>
+</div>
+{include file="public/footer" /}
+<script type="text/javascript">
+
+/*个人信息*/
+function myselfinfo(){
+	layer.open({
+		type: 1,
+		area: ['300px','200px'],
+		fix: false, //不固定
+		maxmin: true,
+		shade:0.4,
+		title: '查看信息',
+		content: '<div>管理员信息</div>'
+	});
+}
+function featured_add(title,url,w,h){
+	layer_show(title,url,w,h);
+}
+/*资讯-添加*/
+function article_add(title,url){
+	var index = layer.open({
+		type: 2,
+		title: title,
+		content: url
+	});
+	layer.full(index);
+}
+/*图片-添加*/
+function picture_add(title,url){
+	var index = layer.open({
+		type: 2,
+		title: title,
+		content: url
+	});
+	layer.full(index);
+}
+/*产品-添加*/
+function product_add(title,url){
+	var index = layer.open({
+		type: 2,
+		title: title,
+		content: url
+	});
+	layer.full(index);
+}
+/*用户-添加*/
+function member_add(title,url,w,h){
+	layer_show(title,url,w,h);
+}
+
+
+</script> 
+
+<!--此乃百度统计代码，请自行删除-->
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?080836300300be57b7f34f4b3e97d911";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+<!--/此乃百度统计代码，请自行删除-->
+</body>
+</html>
