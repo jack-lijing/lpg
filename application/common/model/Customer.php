@@ -12,7 +12,7 @@ class Customer extends Model
 		];
 
 		return $this->order($order)			        
-			        ->paginate(8);
+			        ->paginate(10);
 	}
 	// 添加用户
 	public function add($data = []){
