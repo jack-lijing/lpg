@@ -1,0 +1,50 @@
+{include file="public/header" /}
+<body>
+<div class="page-container">
+	<form class="form form-horizontal"  method="post" action="{:url('Bottle/save')}">
+		<div class="row cl">
+			<label class="form-label col-xs-4 col-sm-2"><span class="c-red">*</span>瓶体ID：</label>
+			<div class="formControls col-xs-8 col-sm-9">
+				<input type="text" class="input-text" value="{$bottleInfo.bottleId}" placeholder="" required="required" id="name" name="bottleId">
+			</div>
+		</div>
+		<div class="row cl">
+			<label class="form-label col-xs-4 col-sm-2"><span class="c-red">*</span>生产日期：</label>
+			<div class="formControls col-xs-8 col-sm-9">
+				<input type="text" class="input-text" value="{$bottleInfo.proDate}" placeholder="" required="required" id="name" name="proDate">
+			</div>
+		</div>
+		<div class="row cl">
+			<label class="form-label col-xs-4 col-sm-2"><span class="c-red">*</span>年检日期：</label>
+			<div class="formControls col-xs-8 col-sm-9">
+				<input type="text" class="input-text" value="{$bottleInfo.yearDate}" required="required" placeholder="" id="name" name="yearDate">
+			</div>
+		</div>
+		<div class="row cl">
+			<label class="form-label col-xs-4 col-sm-2"><span class="c-red">*</span>下次年检日期：</label>
+			<div class="formControls col-xs-8 col-sm-9">
+				<input type="text" class="input-text" value="{$bottleInfo.nextDate}" required="required" placeholder="" id="name" name="nextDate">
+			</div>
+		</div>
+		
+		<div class="row cl">
+			<label class="form-label col-xs-4 col-sm-2"><span class="c-red">*</span>瓶体类型：</label>
+			<div class="formControls col-xs-8 col-sm-9">
+				<span class="select-box">
+				<select name="bottleType" class="select">
+					<option value="普通">普通瓶体</option>			  		
+					<option value="智能">智能瓶体</option>					
+				</select>
+				</span>
+			</div>
+		</div>
+		
+		<div class="row cl">
+			<div class="col-xs-8 col-sm-9 col-xs-offset-4 col-sm-offset-2">
+				<button  type="submit" class="btn btn-primary radius" ><i class="Hui-iconfont">&#xe632;</i> 保存</button>
+			</div>
+		</div>
+	</form>
+</div>
+</div>
+
