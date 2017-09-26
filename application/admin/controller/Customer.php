@@ -36,6 +36,10 @@ class Customer extends Controller
         if(!$validate->scene('add')->check($data)){
             $this->error($validate->getError());
         }
+        // 如果存在id则说明是编辑操作，反之则为添加操作，这样做实现了代码的高度复用
+        if(!empty($data['id'])){
+            return $this->update($data);
+        }
         // 数据入库
         $res = $this->obj->add($data);
         if(!$res){
@@ -58,5 +62,34 @@ class Customer extends Controller
         // 第一个参数是默认的模版，第二参数是把数据传入到我们的模板中
         return $this->fetch();
     }
+    // 数据更新
+    public function update($data){
+        // 更新数据入库
+        $result = $this->obj->save($data, ['id' => intval($data['id'])]);
+        // 强验证
+        if($result){
+            $this->success('编辑成功');
+        }else{
+            $this->error('编辑失败，请稍后编辑');
+        }
+    }
 
+    // 修改状态（如删除）
+    public function status(){
+        // print_r(input('get.'));//测试用
+        $data = input('get.');
+        // print_r($data);
+        // 调用validate方法进行数据验证
+        $validate = validate('Customer');
+        if(!$validate->scene('status')->check($data)){
+            $this->error($validate->getError());
+        }
+
+        $res = $this->obj->save(['status'=>$data['status']], ['id'=>$data['id']]);
+        if($res){
+            $this->success('删除成功');
+        }else{
+            $this->error('删除失败');
+        }
+    }
 }
