@@ -10,6 +10,8 @@
 
 5）完整的sql语句已提交至application下的lpg.sql文件中，内部附有基本条目的说明
 
+6)COMMON下的model里面更新和新增了几个文件，进去后会看到更新提示信息
+
           
 提交人：MORTAL
 
