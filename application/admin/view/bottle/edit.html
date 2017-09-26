@@ -32,14 +32,15 @@
 			<div class="formControls col-xs-8 col-sm-9">
 				<span class="select-box">
 				<select name="bottleType" class="select">
-					<option value="普通">普通瓶体</option>			  		
-					<option value="智能">智能瓶体</option>					
+					<option value="0">普通瓶体</option>			  		
+					<option value="1">智能瓶体</option>					
 				</select>
 				</span>
 			</div>
 		</div>
 		
 		<div class="row cl">
+			<input type="hidden" name="id" value="{$bottleInfo.id}">
 			<div class="col-xs-8 col-sm-9 col-xs-offset-4 col-sm-offset-2">
 				<button  type="submit" class="btn btn-primary radius" ><i class="Hui-iconfont">&#xe632;</i> 保存</button>
 			</div>
